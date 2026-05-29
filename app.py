@@ -52,7 +52,7 @@ def get_answer(question, about):
     if any(word in q for word in ["available", "start", "when", "availability", "join"]):
         return f"📅 {about['availability']}"
 
-    if any(word in q for word in ["why", "hire", "choose", "reason", "stand out", "different"]):
+    if any(word in q for word in ["why", "hire", "choose", "reason", "stand out", "different", "should"]):
         return f"⭐ {about['why_hire']}"
     
     if any(word in q for word in ["summary", "about", "yourself", "introduce"]):
