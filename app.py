@@ -7,7 +7,7 @@ import os
 app = Flask(__name__)
 
 def load_about():
-    with open("about_me.json"), "r" as f:
+    with open("about_me.json" "r", encoding="utf-8") as f:
         return json.load(f)
 
 def get_answer(question, about):
