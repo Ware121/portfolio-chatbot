@@ -13,8 +13,11 @@ def load_about():
 def get_answer(question, about):
     q = question.lower().strip()
     
-    if any(word in q for word in ["hi", "hello", "hey", "good morning", "good afternoon"]):
-        return f"Hello! I'm {about['name']}'s profile assistant. Ask me anything about him!"
+    if any(word in q for word in ["why", "hire", "choose", "reason", "stand out", "different", "should"]):
+        return f"⭐ {about['why_hire']}"
+    
+    if any(word == q or q.startswith(word) for word in ["hi", "hello", "hey", "good morning", "good afternoon"]):
+     return f"Hello! I'm {about['name']}'s profile assistant. Ask me anything about him!"
     
     if any(word in q for word in ["who", "who are you", "name", "whats your name", "who is this" ] ):
         return f"My name is {about['name']}."
@@ -52,8 +55,7 @@ def get_answer(question, about):
     if any(word in q for word in ["available", "start", "when", "availability", "join"]):
         return f"📅 {about['availability']}"
 
-    if any(word in q for word in ["why", "hire", "choose", "reason", "stand out", "different", "should"]):
-        return f"⭐ {about['why_hire']}"
+    
     
     if any(word in q for word in ["summary", "about", "yourself", "introduce"]):
      return f"👤 {about['summary']}"
