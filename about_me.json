@@ -1,8 +1,8 @@
 {
   "name": "Adam Tangonan",
-  "age": "22",
+  "age": "33",
   "location": "Manila, Philippines",
-  "education": "Bachelor of Science in Computer Science, University of Santo Tomas, 2024",
+  "education": "Bachelor of Science in Computer Science, Arellano University, 2024",
   "skills": "Python, HTML, CSS, JavaScript, FastAPI, PostgreSQL, Git",
   "experience": "I built a To-Do CLI app and a personal portfolio chatbot using Python and Flask.",
   "projects": "1. To-Do CLI App with file saving. 2. Personal Portfolio Chatbot (this one!). 3. Calculator CLI app.",
