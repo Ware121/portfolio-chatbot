@@ -14,7 +14,7 @@ def get_answer(question, about):
     q = question.lower().strip()
     
     if any(word in q for word in ["hi", "hello", "hey", "good morning", "good afternoon"]):
-        return f"Hello! I'm {about ['name']} 's profile assistant  Ask me anything about him! "
+        return f"Hello! I'm {about['name']}'s profile assistant. Ask me anything about him!"
     
     if any(word in q for word in ["who", "who are you", "name", "whats your name", "who is this" ] ):
         return f"My name is {about['name']}."
