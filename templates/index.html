@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portfolio Chatbot</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #0f172a;
+      color: #e2e8f0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    p.subtitle {
+      font-size: 0.9rem;
+      color: #94a3b8;
+      margin-bottom: 20px;
+    }
+
+    #chat-box {
+      width: 100%;
+      max-width: 650px;
+      height: 420px;
+      background: #1e293b;
+      border-radius: 12px;
+      padding: 16px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      border: 1px solid #334155;
+    }
+
+    .message {
+      max-width: 80%;
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-size: 0.92rem;
+      line-height: 1.5;
+      white-space: pre-wrap;
+    }
+
+    .user {
+      background: #38bdf8;
+      color: #0f172a;
+      align-self: flex-end;
+      border-bottom-right-radius: 2px;
+    }
+
+    .bot {
+      background: #334155;
+      color: #e2e8f0;
+      align-self: flex-start;
+      border-bottom-left-radius: 2px;
+    }
+
+    #input-area {
+      display: flex;
+      width: 100%;
+      max-width: 650px;
+      margin-top: 12px;
+      gap: 8px;
+    }
+
+    #user-input {
+      flex: 1;
+      padding: 12px 16px;
+      border-radius: 8px;
+      border: 1px solid #334155;
+      background: #1e293b;
+      color: #e2e8f0;
+      font-size: 0.95rem;
+      outline: none;
+    }
+
+    #user-input:focus { border-color: #38bdf8; }
+
+    button {
+      padding: 12px 20px;
+      background: #38bdf8;
+      color: #0f172a;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+
+    button:hover { background: #7dd3fc; }
+
+    .suggestions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      max-width: 650px;
+      margin-top: 10px;
+    }
+
+    .chip {
+      background: #1e293b;
+      border: 1px solid #334155;
+      color: #94a3b8;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      cursor: pointer;
+    }
+
+    .chip:hover { border-color: #38bdf8; color: #38bdf8; }
+  </style>
+</head>
+<body>
+
+  <h1>💼 Portfolio Chatbot</h1>
+  <p class="subtitle">Ask me anything about the candidate!</p>
+
+  <div id="chat-box">
+    <div class="message bot">👋 Hi! I'm a portfolio chatbot. Ask me about skills, projects, education, or anything else!</div>
+  </div>
+
+  <div class="suggestions">
+    <span class="chip" onclick="ask('What are your skills?')">🛠️ Skills</span>
+    <span class="chip" onclick="ask('Tell me about your projects')">🚀 Projects</span>
+    <span class="chip" onclick="ask('What is your education?')">🎓 Education</span>
+    <span class="chip" onclick="ask('Why should we hire you?')">⭐ Why hire?</span>
+    <span class="chip" onclick="ask('How can I contact you?')">📬 Contact</span>
+  </div>
+
+  <div id="input-area">
+    <input id="user-input" type="text" placeholder="Ask something..." onkeydown="if(event.key==='Enter') sendMessage()" />
+    <button onclick="sendMessage()">Send</button>
+  </div>
+
+  <script>
+    function addMessage(text, sender) {
+      const box = document.getElementById("chat-box");
+      const msg = document.createElement("div");
+      msg.classList.add("message", sender);
+      msg.textContent = text;
+      box.appendChild(msg);
+      box.scrollTop = box.scrollHeight;
+    }
+
+    async function ask(question) {
+      addMessage(question, "user");
+      const res = await fetch("/ask", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ question })
+      });
+      const data = await res.json();
+      addMessage(data.answer, "bot");
+    }
+
+    async function sendMessage() {
+      const input = document.getElementById("user-input");
+      const question = input.value.trim();
+      if (!question) return;
+      input.value = "";
+      await ask(question);
+    }
+  </script>
+
+</body>
+</html>

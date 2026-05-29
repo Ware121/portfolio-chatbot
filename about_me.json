@@ -1,0 +1,15 @@
+{
+  "name": "Adam Tangonan",
+  "age": "22",
+  "location": "Manila, Philippines",
+  "education": "Bachelor of Science in Computer Science, University of Santo Tomas, 2024",
+  "skills": "Python, HTML, CSS, JavaScript, FastAPI, PostgreSQL, Git",
+  "experience": "I built a To-Do CLI app and a personal portfolio chatbot using Python and Flask.",
+  "projects": "1. To-Do CLI App with file saving. 2. Personal Portfolio Chatbot (this one!). 3. Calculator CLI app.",
+  "strengths": "Fast learner, detail-oriented, passionate about backend development and building real projects.",
+  "goals": "To land my first job as a Python backend developer and grow into a full-stack engineer.",
+  "hobbies": "Coding, learning new tech, watching programming tutorials.",
+  "contact": "email@gmail.com | github.com/yourname | linkedin.com/in/yourname",
+  "availability": "I am available to start immediately and open to full-time or internship roles.",
+  "why_hire": "I am self-taught, highly motivated, and I build real projects to prove my skills. I learn fast and I take feedback well."
+}
